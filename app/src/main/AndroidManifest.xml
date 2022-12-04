@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bonsai_masterdetail">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.teknos.m8uf2.wwydryszek">
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bonsai_MasterDetail">
         <activity
-            android:name=".MainActivity"
+            android:name=".screen.EditItem"
+            android:exported="true"
+            android:parentActivityName=".screen.ListScreen"/>
+        <activity
+            android:name=".screen.AlarmScreen"
+            android:exported="true"
+            android:parentActivityName=".screen.AlarmScreen"/>
+        <activity
+            android:name=".screen.GaleryScreen"
+            android:exported="true"
+            android:parentActivityName=".screen.GaleryScreen"/>
+        <activity
+            android:name="com.teknos.m8uf2.wwydryszek.screen.ListScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

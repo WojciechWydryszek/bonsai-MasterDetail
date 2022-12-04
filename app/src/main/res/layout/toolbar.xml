@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#008F6D"
+        android:padding="9dp">
+
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_settings_24" />
+
+        <Button
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/alarm"
+            android:layout_marginEnd="120dp"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:onClick="toolBarClick"
+            android:text="Llista"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/galery"
+            android:layout_marginEnd="107dp"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:onClick="toolBarClick"
+            android:text="Alarmes"
+            android:textColor="@color/black"
+            tools:ignore="DuplicateClickableBoundsCheck" />
+
+        <Button
+            android:id="@+id/galery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/right_icon"
+            android:layout_marginEnd="25dp"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:onClick="toolBarClick"
+            android:text="Galeria"
+            android:textColor="@color/black"
+            tools:ignore="DuplicateClickableBoundsCheck" />
+    </RelativeLayout>
+
+</RelativeLayout>
