@@ -1,13 +1,12 @@
 package com.teknos.m8uf2.wwydryszek.enetity;
 
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 public class Bonsai {
-    private String name, origin,
-                   famili, note;
-    private int age;
-    private ImageView image;
-    private float price;
+    private String name, origin, price,
+                   famili, note, age;
+    private Bitmap image;
     private boolean alive;
 
     public String getName() { return name; }
@@ -22,21 +21,21 @@ public class Bonsai {
 
     public void setFamili(String famili) { this.famili = famili; }
 
-    public int getAge() { return age; }
+    public String getAge() { return age; }
 
-    public void setAge(int age) { this.age = age; }
+    public void setAge(String age) { this.age = age; }
 
     public String getNote() { return note; }
 
     public void setNote(String note) { this.note = note; }
 
-    public ImageView getImage() { return image; }
+    public Bitmap getImage() { return image; }
 
-    public void setImage(ImageView image) { this.image = image; }
+    public void setImage(Bitmap image) { this.image = image; }
 
-    public float getPrice() { return price; }
+    public String getPrice() { return price; }
 
-    public void setPrice(float price) { this.price = price; }
+    public void setPrice(String price) { this.price = price; }
 
     public boolean isAlive() { return alive; }
 

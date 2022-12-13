@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.teknos.m8uf2.wwydryszek.R;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
-import com.teknos.m8uf2.wwydryszek.screen.EditItem;
+import com.teknos.m8uf2.wwydryszek.screen.screenHelpers.EditItem;
 import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 
 import java.util.ArrayList;
@@ -34,25 +33,37 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
     //View holder class
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private final TextView tvName, tvAge;
-        private final CheckBox cbAlive;
+        private final TextView tvName, tvAge, tvAlive;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tvName);
             tvAge = itemView.findViewById(R.id.tvAge);
-            cbAlive = itemView.findViewById(R.id.cbAlive);
+            tvAlive = itemView.findViewById(R.id.tvAlive);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activityParent, EditItem.class);
+
+                    Singletone.getInstance().setEdit(true);
+
+                    Singletone.getInstance().setPosition(getAdapterPosition());
+
+                    activityParent.startActivity(intent);
+                }
+            });
         }
 
         public TextView getTvName() { return tvName; }
 
         public TextView getTvAge() { return tvAge; }
 
-        public CheckBox getCbAlive() { return cbAlive; }
+        public TextView getCbAlive() { return tvAlive; }
 
         @Override
-        public void onClick(View view) {}
+        public void onClick(View view) {  }
     }
 
     @NonNull
@@ -69,8 +80,11 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
         Bonsai bonsai = this.bonsaiArrayList.get(position);
 
         item.getTvName().setText(bonsai.getName());
-        item.getTvAge().setText(bonsai.getAge());
-        item.getCbAlive().setChecked(bonsai.isAlive());
+        item.getTvAge().setText(bonsai.getAge() + " Anys");
+        if(bonsai.isAlive())
+            item.getCbAlive().setText("Esta viu");
+        else
+            item.getCbAlive().setText("Esta mort");
 
         item.getTvName().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,4 +103,5 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
 
     @Override
     public int getItemCount() { return this.bonsaiArrayList.size(); }
+
 }

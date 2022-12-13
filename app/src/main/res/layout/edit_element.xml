@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgBonsai"
         android:layout_width="148dp"
         android:layout_height="213dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.739"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBonsai"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -83,7 +83,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.772"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBonsai"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <EditText
@@ -97,19 +97,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBonsai" />
 
     <Button
         android:id="@+id/btnImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_green_light"
+        android:onClick="btnImage"
         android:text="Afegir imatge"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/etName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.728"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBonsai"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.858" />
 
@@ -127,7 +128,7 @@
         app:layout_constraintVertical_bias="0.002" />
 
     <EditText
-        android:id="@+id/edNote"
+        android:id="@+id/etNote"
         android:layout_width="310dp"
         android:layout_height="211dp"
         android:layout_marginBottom="4dp"
@@ -148,13 +149,45 @@
         android:layout_height="wrap_content"
         android:background="@drawable/icons8_chevron_left_50"
         android:onClick="back"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/imgBonsai"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.071"
         app:srcCompat="@drawable/icons8_chevron_left_50"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnTrash"
+        android:layout_width="93dp"
+        android:layout_height="93dp"
+        android:background="@drawable/icons8_trash_can_100"
+        android:onClick="btnTrash"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgSave"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNote"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icons8_trash_can_100"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icons8_edit_48"
+        android:onClick="btnEdit"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064"
+        app:srcCompat="@drawable/icons8_edit_48"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

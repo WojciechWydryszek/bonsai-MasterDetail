@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recycleView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screen.ListScreen">
@@ -13,14 +12,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="399dp"
-        android:layout_height="567dp"
+        android:layout_width="403dp"
+        android:layout_height="588dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.503" />
 
     <ImageButton
         android:id="@+id/imgAdd"
@@ -35,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
         app:layout_constraintVertical_bias="0.36"
         app:srcCompat="@drawable/icons"
-        tools:ignore="SpeakableTextPresentCheck"
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
         tools:srcCompat="@drawable/icons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.teknos.m8uf2.wwydryszek.R;
 import com.teknos.m8uf2.wwydryszek.adapter.AdapterBonsai;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
+import com.teknos.m8uf2.wwydryszek.screen.screenHelpers.EditItem;
 import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ListScreen extends AppCompatActivity {
         this.bonsaiArrayList = Singletone.getInstance().getBonsaiList();
 
         if(bonsaiArrayList.size() > 0) {
-            this.recyclerView = findViewById(R.id.recycleView);
+            this.recyclerView = findViewById(R.id.recyclerView);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
             this.recyclerView.setLayoutManager(linearLayoutManager);
@@ -39,6 +39,9 @@ public class ListScreen extends AppCompatActivity {
     }
 
     public void addElement(View view) {
+
+        Singletone.getInstance().setEdit(false);
+
         Intent intent = new Intent(ListScreen.this, EditItem.class);
 
         startActivity(intent);
@@ -46,16 +49,7 @@ public class ListScreen extends AppCompatActivity {
 
     // Function for change screem using toolBar
     public void toolBarClick(View view) {
-        Button button = (Button) view;
 
-        Intent intent = new Intent();
-
-        if(button.getText().equals("Alarmes"))
-            intent = new Intent(ListScreen.this, AlarmScreen.class);
-
-        else if(button.getText().equals("Galeria"))
-            intent = new Intent(ListScreen.this, GaleryScreen.class);
-
-        startActivity(intent);
+        Singletone.getInstance().goTo(this, view);
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.teknos.m8uf2.wwydryszek.R;
+import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 
 public class AlarmScreen extends AppCompatActivity {
     @Override
@@ -19,17 +20,6 @@ public class AlarmScreen extends AppCompatActivity {
 
     // Function for change screem using toolBar
     public void toolBarClick(View view) {
-        Button button = (Button) view;
-
-        Intent intent = new Intent();
-
-        if(button.getText().equals("Llista"))
-            intent = new Intent(AlarmScreen.this, ListScreen.class);
-
-        else if(button.getText().equals("Galeria"))
-            intent = new Intent(AlarmScreen.this, GaleryScreen.class);
-
-        startActivity(intent);
-
+        Singletone.getInstance().goTo(this, view);
     }
 }
