@@ -2,6 +2,7 @@ package com.teknos.m8uf2.wwydryszek.singletone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.Button;
 

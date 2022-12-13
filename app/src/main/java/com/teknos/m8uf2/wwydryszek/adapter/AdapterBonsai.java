@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +36,7 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final TextView tvName, tvAge, tvAlive;
+        private ImageView imageBonsai;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -41,6 +44,7 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
             tvName = itemView.findViewById(R.id.tvName);
             tvAge = itemView.findViewById(R.id.tvAge);
             tvAlive = itemView.findViewById(R.id.tvAlive);
+            imageBonsai = itemView.findViewById(R.id.imageBonsai);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,6 +66,8 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
 
         public TextView getCbAlive() { return tvAlive; }
 
+        public ImageView getImageBonsai() { return imageBonsai; }
+
         @Override
         public void onClick(View view) {  }
     }
@@ -81,6 +87,7 @@ public class AdapterBonsai extends RecyclerView.Adapter<AdapterBonsai.ViewHolder
 
         item.getTvName().setText(bonsai.getName());
         item.getTvAge().setText(bonsai.getAge() + " Anys");
+        item.getImageBonsai().setImageBitmap(bonsai.getImage());
         if(bonsai.isAlive())
             item.getCbAlive().setText("Esta viu");
         else

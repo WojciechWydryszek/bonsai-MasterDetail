@@ -1,6 +1,8 @@
 package com.teknos.m8uf2.wwydryszek.screen.screenHelpers;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -140,15 +144,19 @@ public class EditItem extends AppCompatActivity {
 
     public void save(View view) {
 
-        Intent intent = new Intent(EditItem.this, ListScreen.class);
+        if(photo == null && !Singletone.getInstance().getEdit())
+            Toast.makeText(this, "Es requereix una imatge", Toast.LENGTH_SHORT).show();
+        else {
+            Intent intent = new Intent(EditItem.this, ListScreen.class);
 
-        pullData();
+            pullData();
 
-        if(!Singletone.getInstance().getEdit())
-            Singletone.getInstance().addBonsai(bonsai);
+            if (!Singletone.getInstance().getEdit())
+                Singletone.getInstance().addBonsai(bonsai);
 
-        startActivity(intent);
-        finish();
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void btnEdit(View view){
@@ -164,13 +172,32 @@ public class EditItem extends AppCompatActivity {
     }
 
     public void btnTrash(View view){
-        Intent intent = new Intent(EditItem.this, ListScreen.class);
 
-        startActivity(intent);
 
-        finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Eliminar element: " + (Singletone.getInstance().getPosition() + 1));
+        builder.setMessage("Segür que vols eliminar l'element?");
+        builder.setPositiveButton("Confirm",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(EditItem.this, ListScreen.class);
 
-        bonsaiArrayList.remove(Singletone.getInstance().getPosition());
+                        startActivity(intent);
+
+                        finish();
+
+                        bonsaiArrayList.remove(Singletone.getInstance().getPosition());
+                    } });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void pullData() {
