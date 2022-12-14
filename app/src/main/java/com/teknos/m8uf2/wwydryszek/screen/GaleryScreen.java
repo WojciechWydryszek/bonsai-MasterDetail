@@ -20,6 +20,7 @@ public class GaleryScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Singletone.getInstance().getTheme();
         setContentView(R.layout.galery_screen);
 
         this.bonsaiArrayList = Singletone.getInstance().getBonsaiList();

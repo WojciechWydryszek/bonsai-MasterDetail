@@ -2,15 +2,19 @@ package com.teknos.m8uf2.wwydryszek.singletone;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RadioGroup;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
+import com.teknos.m8uf2.wwydryszek.R;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
 import com.teknos.m8uf2.wwydryszek.screen.AlarmScreen;
+import com.teknos.m8uf2.wwydryszek.screen.ConfigScreen;
 import com.teknos.m8uf2.wwydryszek.screen.GaleryScreen;
 import com.teknos.m8uf2.wwydryszek.screen.ListScreen;
-
+import com.teknos.m8uf2.wwydryszek.screen.QrScreen;
 import java.util.ArrayList;
 
 public class Singletone {
@@ -18,22 +22,44 @@ public class Singletone {
     private Bonsai bonsai;
     private ArrayList<Bonsai> bonsaiList = new ArrayList<>();
     private boolean edit = false,
-                    photoEdit = false;
+                    photoEdit = false,
+                    darkTheme = false;
     private int position;
 
     public void goTo(Context parentActivity, View view) {
-        Button button = (Button) view;
+
+        ImageButton imageButton = (ImageButton) view;
 
         Intent intent = new Intent();
 
-        if(button.getText().equals("Llista"))
+        if(imageButton.getId() == R.id.btnList)
             intent = new Intent(parentActivity, ListScreen.class);
-        else if (button.getText().equals("Alarmes"))
+        else if (imageButton.getId() == R.id.btnAlarm)
             intent = new Intent(parentActivity, AlarmScreen.class);
-        else if(button.getText().equals("Galeria"))
+        else if (imageButton.getId() == R.id.btnGallery)
             intent = new Intent(parentActivity, GaleryScreen.class);
+        else if (imageButton.getId() == R.id.btnConfig)
+            intent = new Intent(parentActivity, ConfigScreen.class);
+        else if (imageButton.getId() == R.id.btnQr)
+            intent = new Intent(parentActivity, QrScreen.class);
 
         parentActivity.startActivity(intent);
+    }
+
+    public boolean getDarkTheme() {
+        if(darkTheme)
+            return true;
+        else
+            return false;
+    }
+
+    public void setDarkTheme(Boolean darkTheme) { this.darkTheme = darkTheme; }
+
+    public void getTheme() {
+        if(Singletone.getInstance().getDarkTheme())
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     private static class SingletoneInstance {

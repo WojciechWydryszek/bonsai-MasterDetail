@@ -8,14 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.teknos.m8uf2.wwydryszek.R;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
-import com.teknos.m8uf2.wwydryszek.screen.screenHelpers.EditItem;
+import com.teknos.m8uf2.wwydryszek.screen.EditItem;
 import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 
 import java.util.ArrayList;

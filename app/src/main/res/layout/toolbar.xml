@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -10,48 +11,73 @@
         android:background="#008F6D"
         android:padding="9dp">
 
-        <ImageView
-            android:id="@+id/right_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/btnConfig"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_settings_24" />
+            android:background="#008F6D"
+            android:onClick="toolBarClick"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_settings_24"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <Button
-            android:id="@+id/list"
+        <ImageButton
+            android:id="@+id/btnAlarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/alarm"
-            android:layout_marginEnd="120dp"
-            android:backgroundTint="@android:color/holo_green_light"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="241dp"
+            android:background="@drawable/icons8_despertador_60"
             android:onClick="toolBarClick"
-            android:text="Llista"
-            android:textColor="@color/black" />
+            app:srcCompat="@drawable/icons8_despertador_60"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
-            android:id="@+id/alarm"
+        <ImageButton
+            android:id="@+id/btnQr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/galery"
-            android:layout_marginEnd="107dp"
-            android:backgroundTint="@android:color/holo_green_light"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="108dp"
+            android:background="@drawable/icons8_qr_48"
             android:onClick="toolBarClick"
-            android:text="Alarmes"
-            android:textColor="@color/black"
-            tools:ignore="DuplicateClickableBoundsCheck" />
+            app:srcCompat="@drawable/icons8_qr_48"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
-            android:id="@+id/galery"
+        <ImageButton
+            android:id="@+id/btnList"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="321dp"
+            android:background="@drawable/icons8_lista_de_verificaci_n_60"
+            android:onClick="toolBarClick"
+            app:srcCompat="@drawable/icons8_lista_de_verificaci_n_60"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnGallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/right_icon"
-            android:layout_marginEnd="25dp"
-            android:backgroundTint="@android:color/holo_green_light"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="174dp"
+            android:background="@drawable/icons8_galer_a_de_im_genes_50"
             android:onClick="toolBarClick"
-            android:text="Galeria"
-            android:textColor="@color/black"
-            tools:ignore="DuplicateClickableBoundsCheck" />
+            app:srcCompat="@drawable/icons8_galer_a_de_im_genes_50"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </RelativeLayout>
 
 </RelativeLayout>

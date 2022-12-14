@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bonsai_MasterDetail">
         <activity
-            android:name=".screen.screenHelpers.EditItem"
+            android:name=".screen.QrScreen"
+            android:exported="true"/>
+        <activity
+            android:name=".screen.ConfigScreen"
+            android:exported="true"/>
+        <activity
+            android:name=".screen.EditItem"
             android:exported="true"/>
         <activity
             android:name=".screen.AlarmScreen"

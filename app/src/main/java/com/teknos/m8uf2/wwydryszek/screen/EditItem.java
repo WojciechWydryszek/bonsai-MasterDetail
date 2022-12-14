@@ -1,4 +1,4 @@
-package com.teknos.m8uf2.wwydryszek.screen.screenHelpers;
+package com.teknos.m8uf2.wwydryszek.screen;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -19,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.teknos.m8uf2.wwydryszek.R;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
-import com.teknos.m8uf2.wwydryszek.screen.ListScreen;
 import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 import java.util.ArrayList;
 
@@ -38,6 +37,7 @@ public class EditItem extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Singletone.getInstance().getTheme();
         setContentView(R.layout.edit_element);
 
         Singletone.getInstance().setPhotoEdit(false);
@@ -144,8 +144,8 @@ public class EditItem extends AppCompatActivity {
 
     public void save(View view) {
 
-        if(photo == null && !Singletone.getInstance().getEdit())
-            Toast.makeText(this, "Es requereix una imatge", Toast.LENGTH_SHORT).show();
+        if(photo == null || etName.getText().toString().equals("") || numAge.getText().toString().equals("") && !Singletone.getInstance().getEdit())
+            Toast.makeText(this, "Falten dades obligatories", Toast.LENGTH_SHORT).show();
         else {
             Intent intent = new Intent(EditItem.this, ListScreen.class);
 

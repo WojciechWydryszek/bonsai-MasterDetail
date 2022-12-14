@@ -10,7 +10,6 @@ import android.view.View;
 import com.teknos.m8uf2.wwydryszek.R;
 import com.teknos.m8uf2.wwydryszek.adapter.AdapterBonsai;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
-import com.teknos.m8uf2.wwydryszek.screen.screenHelpers.EditItem;
 import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class ListScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Singletone.getInstance().getTheme();
         setContentView(R.layout.list_screen);
 
         this.bonsaiArrayList = Singletone.getInstance().getBonsaiList();
