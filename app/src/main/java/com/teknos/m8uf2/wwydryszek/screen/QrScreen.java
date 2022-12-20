@@ -33,32 +33,31 @@ public class QrScreen extends AppCompatActivity {
 
         editText = findViewById(R.id.editTextTextPersonName);
         imageView = findViewById(R.id.imageView);
+
+        generateQr();
     }
 
-    public void generateQr(View view){
-        if (TextUtils.isEmpty(editText.getText().toString())) {
+    public void generateQr(){
 
-        } else {
-            WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
-            Display display = manager.getDefaultDisplay();
+        Display display = manager.getDefaultDisplay();
 
-            Point point = new Point();
-            display.getSize(point);
+        Point point = new Point();
+        display.getSize(point);
 
-            int width = point.x;
-            int height = point.y;
+        int width = point.x;
+        int height = point.y;
 
-            int dimen = width < height ? width : height;
-            dimen = dimen * 3 / 4;
+        int dimen = width < height ? width : height;
+        dimen = dimen * 3 / 4;
 
-            qrgEncoder = new QRGEncoder(editText.getText().toString(), null, QRGContents.Type.TEXT, dimen);
-            try {
-                bitmap = qrgEncoder.encodeAsBitmap();
-                imageView.setImageBitmap(bitmap);
-            } catch (WriterException e) {
-                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
-            }
+        qrgEncoder = new QRGEncoder(editText.getText().toString(), null, QRGContents.Type.TEXT, dimen);
+        try {
+            bitmap = qrgEncoder.encodeAsBitmap();
+            imageView.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
     }
 
