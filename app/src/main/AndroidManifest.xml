@@ -29,7 +29,10 @@
             android:name=".screen.GaleryScreen"
             android:exported="true"/>
         <activity
-            android:name="com.teknos.m8uf2.wwydryszek.screen.ListScreen"
+            android:name=".screen.ListScreen"
+            android:exported="true"/>
+        <activity
+            android:name="com.teknos.m8uf2.wwydryszek.screen.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

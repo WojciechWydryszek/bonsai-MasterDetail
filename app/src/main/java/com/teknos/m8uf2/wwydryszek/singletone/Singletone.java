@@ -34,8 +34,6 @@ public class Singletone {
 
         if(imageButton.getId() == R.id.btnList)
             intent = new Intent(parentActivity, ListScreen.class);
-        else if (imageButton.getId() == R.id.btnAlarm)
-            intent = new Intent(parentActivity, AlarmScreen.class);
         else if (imageButton.getId() == R.id.btnGallery)
             intent = new Intent(parentActivity, GaleryScreen.class);
         else if (imageButton.getId() == R.id.btnConfig)

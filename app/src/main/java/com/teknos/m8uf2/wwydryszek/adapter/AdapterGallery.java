@@ -99,6 +99,7 @@ public class AdapterGallery extends RecyclerView.Adapter<AdapterGallery.ViewHold
         item.getImage().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { } });
+
     }
 
     @Override

@@ -144,7 +144,7 @@ public class EditItem extends AppCompatActivity {
 
     public void save(View view) {
 
-        if(photo == null || etName.getText().toString().equals("") || numAge.getText().toString().equals("") && !Singletone.getInstance().getEdit())
+        if(etName.getText().toString().equals("") || numAge.getText().toString().equals("") && !Singletone.getInstance().getEdit())
             Toast.makeText(this, "Falten dades obligatories", Toast.LENGTH_SHORT).show();
         else {
             Intent intent = new Intent(EditItem.this, ListScreen.class);
@@ -157,6 +157,24 @@ public class EditItem extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private void pullData() {
+
+        bonsai.setName(etName.getText().toString());
+        bonsai.setAge(numAge.getText().toString());
+        bonsai.setPrice(numPrice.getText().toString());
+        bonsai.setOrigin(etOrigin.getText().toString());
+        bonsai.setFamili(etFamili.getText().toString());
+        bonsai.setNote(etNote.getText().toString());
+
+        if(Singletone.getInstance().isPhotoEdit())
+            bonsai.setImage(photo);
+
+        if(checkAlive.isChecked())
+            bonsai.setAlive(true);
+        else
+            bonsai.setAlive(false);
     }
 
     public void btnEdit(View view){
@@ -198,23 +216,5 @@ public class EditItem extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-
-    private void pullData() {
-
-        bonsai.setName(etName.getText().toString());
-        bonsai.setAge(numAge.getText().toString());
-        bonsai.setPrice(numPrice.getText().toString());
-        bonsai.setOrigin(etOrigin.getText().toString());
-        bonsai.setFamili(etFamili.getText().toString());
-        bonsai.setNote(etNote.getText().toString());
-
-        if(Singletone.getInstance().isPhotoEdit())
-            bonsai.setImage(photo);
-
-        if(checkAlive.isChecked())
-            bonsai.setAlive(true);
-        else
-            bonsai.setAlive(false);
     }
 }

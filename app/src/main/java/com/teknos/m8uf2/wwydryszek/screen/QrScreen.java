@@ -10,11 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.zxing.WriterException;
 import com.teknos.m8uf2.wwydryszek.R;
-import com.teknos.m8uf2.wwydryszek.adapter.AdapterQr;
 import com.teknos.m8uf2.wwydryszek.enetity.Bonsai;
 import com.teknos.m8uf2.wwydryszek.singletone.Singletone;
 import java.util.ArrayList;
@@ -26,7 +24,6 @@ public class QrScreen extends AppCompatActivity {
     private EditText editText;
     private ImageView imageView;
     private ArrayList<Bonsai> bonsaiArrayList;
-    private RecyclerView recyclerView;
 
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
@@ -37,51 +34,64 @@ public class QrScreen extends AppCompatActivity {
         Singletone.getInstance().getTheme();
         setContentView(R.layout.qr_screen);
 
-        editText = findViewById(R.id.editTextTextPersonName);
+        editText = findViewById(R.id.qrName);
         imageView = findViewById(R.id.imageView);
 
         this.bonsaiArrayList = Singletone.getInstance().getBonsaiList();
 
-        if(bonsaiArrayList.size() > 0) {
+    }
 
-            this.recyclerView = findViewById(R.id.galleryRecycleView);
+    public void generateQr(View view){
 
-            GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 2);
-            this.recyclerView.setLayoutManager(linearLayoutManager);
+        if (editText.getText().toString().equals("") || !checkValidName())
+            Toast.makeText(this, "Nom Incorrecte", Toast.LENGTH_SHORT).show();
+        else {
+            Bonsai bonsai;
+            int validBonsiPosition = 0;
+            for (int i = 0; i < bonsaiArrayList.size(); i++) {
+                bonsai = bonsaiArrayList.get(i);
+                if (bonsai.getName().equals(editText.getText().toString()))
+                     validBonsiPosition = i;
+            }
 
-            AdapterQr adapterQr = new AdapterQr(Singletone.getInstance().getBonsaiList(), this);
-            this.recyclerView.setAdapter(adapterQr);
+            bonsai = bonsaiArrayList.get(validBonsiPosition);
+
+            WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+
+            Display display = manager.getDefaultDisplay();
+
+            Point point = new Point();
+            display.getSize(point);
+
+            int width = point.x, height = point.y;
+
+            int dimen = width < height ? width : height;
+            dimen = dimen * 3 / 4;
+
+            qrgEncoder = new QRGEncoder(generateStringQr(bonsai), null, QRGContents.Type.TEXT, dimen);
+            try {
+                bitmap = qrgEncoder.encodeAsBitmap();
+                imageView.setImageBitmap(bitmap);
+            } catch (WriterException e) {
+                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    public void generateQr(){
-
-        String text = generateStringQr();
-
-        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
-
-        Display display = manager.getDefaultDisplay();
-
-        Point point = new Point();
-        display.getSize(point);
-
-        int width = point.x, height = point.y;
-
-        int dimen = width < height ? width : height;
-        dimen = dimen * 3 / 4;
-
-        qrgEncoder = new QRGEncoder(editText.getText().toString(), null, QRGContents.Type.TEXT, dimen);
-        try {
-            bitmap = qrgEncoder.encodeAsBitmap();
-            imageView.setImageBitmap(bitmap);
-        } catch (WriterException e) {
-            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+    private boolean checkValidName() {
+        boolean validName = false;
+        for (int i = 0; i < bonsaiArrayList.size(); i++) {
+            Bonsai bonsai = bonsaiArrayList.get(i);
+            if (bonsai.getName().equals(editText.getText().toString()))
+                validName = true;
         }
+        return validName;
     }
 
-    private String generateStringQr() {
-
-        return null;
+    private String generateStringQr(Bonsai bonsai) {
+        String data = bonsai.getImage() + "," + bonsai.getName() + "," + bonsai.getAge() + "," + bonsai.getOrigin() + "," + bonsai.getPrice() + "," +
+                bonsai.getFamili() + "," + bonsai.isAlive() + "," + bonsai.getNote();
+        return data;
     }
 
     // Function for change screem using toolBar
