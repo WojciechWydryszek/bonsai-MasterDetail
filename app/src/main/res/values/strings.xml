@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Bonsai_MasterDetail</string>
+    <string name="app_name" translatable="false">Bonsai_MasterDetail</string>
+    <string name="generate_qr">Genera QR</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="preu">Preu</string>
+    <string name="familia">Familia</string>
+    <string name="notes">Notes</string>
+    <string name="nom">Nom</string>
+    <string name="edat">Edat</string>
+    <string name="origen">Origen</string>
+    <string name="scan_qr">Escanejar QR</string>
+    <string name="generar_qr">Generar QR</string>
+    <string name="textview" translatable="false">TextView</string>
+    <string name="afegir_imatge">Afegir imatge</string>
+    <string name="esta_viu">Esta Viu?</string>
+    <string name="creat_per_wydryszek_wojciech">Creat per Wojciech Wydryszek</string>
 </resources>

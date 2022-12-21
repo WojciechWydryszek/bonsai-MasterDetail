@@ -23,9 +23,6 @@
             android:name=".screen.EditItem"
             android:exported="true"/>
         <activity
-            android:name=".screen.AlarmScreen"
-            android:exported="true"/>
-        <activity
             android:name=".screen.GaleryScreen"
             android:exported="true"/>
         <activity

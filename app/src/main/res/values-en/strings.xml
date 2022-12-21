@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="generate_qr">Generate QR</string>
+    <string name="eliminar">Delete</string>
+    <string name="preu">Price</string>
+    <string name="familia">Famili</string>
+    <string name="notes">Coments</string>
+    <string name="nom">Name</string>
+    <string name="edat">Age</string>
+    <string name="origen">Origin</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="generar_qr">Generate QR</string>
+    <string name="afegir_imatge">Add image</string>
+    <string name="esta_viu">Is alive?</string>
+    <string name="creat_per_wydryszek_wojciech">Created by Wojciech Wydryszek</string>
+</resources>
